@@ -67,7 +67,7 @@ function HandleModelList( pVal )
 			if( sVV=="Other")
 				sVV="Orca colosseum";
 
-			let HtmlNewVendor='<div class="OneVendorBlock" Vendor="'+strVendor+'">'+
+			let HtmlNewVendor='<div class="OneVendorBlock" Vendor="'+strVendor+'" VendorName="'+sVV+'">'+
 '<div class="BlockBanner">'+
 '	<div class="BannerBtns">'+
 '		<div class="SmallBtn_Green trans" tid="t11" onClick="SelectPrinterAll('+"\'"+strVendor+"\'"+')">all</div>'+
@@ -81,6 +81,9 @@ function HandleModelList( pVal )
 			
 			$('#Content').append(HtmlNewVendor);
 		}
+		
+		//GalaxySlicer: Sort Vendors
+		sortVendors();
 		
 		let ModelName=OneModel['model'];
 		
@@ -247,6 +250,90 @@ function ConfirmSelect()
 	}
 }
 
+function sortVendors() 
+{
+    var vendorElements = $('[Vendor]');
+    var customVendor = null;
+    var sortedVendors = [];
 
+    vendorElements.each(function() 
+	{
+        var vendorName = $(this).attr('Vendor');
+		
+        if (vendorName === 'Custom') 
+		{
+            customVendor = this; // Save the 'Custom' element
+        } 
+		else 
+		{
+            sortedVendors.push(this); // Add the other vendor elements
+        }
+    });
 
+    // Sort the other vendor elements alphabetically
+    sortedVendors.sort(function(a, b) 
+	{
+        var vendorA = $(a).attr('Vendor');
+        var vendorB = $(b).attr('Vendor');
+        return vendorA.localeCompare(vendorB);
+    });
 
+    // Empty the container and add the sorted elements in the desired order
+    var container = vendorElements.parent();
+    container.empty();
+
+    // Add the 'Custom' element first, if present
+    if (customVendor !== null) 
+	{
+        container.append(customVendor);
+    }
+
+    // Add the other vendor elements in the sorted order
+    sortedVendors.forEach(function(element) 
+	{
+        container.append(element);
+    });
+}
+
+function FilterVendor()
+{
+    var inputValue = $('#Search').val();
+    
+    if (inputValue.trim() !== '') 
+	{
+        var searchedVendor = $('#Search').val().trim().toLowerCase();
+		
+        // Search for elements with the attribute "VendorName" and check them
+        $('[VendorName]').each(function() 
+		{
+            var nameVendor = $(this).attr('VendorName').toLowerCase();
+            
+            if (nameVendor.includes(searchedVendor)) 
+			{
+                $(this).show(); // The element's vendor value contains the searched string, show it
+            } 
+			else 
+			{
+                $(this).hide(); // The element has a different vendor value or doesn't contain the string, hide it
+            }
+        });
+    } 
+	else 
+	{
+        $('[VendorName]').show();
+    }
+}
+
+$(document).ready(function() 
+{
+    $('#Search').on('input', function() 
+	{
+        FilterVendor();
+    });
+
+    $('#Clear').click(function() 
+	{
+        $('#Search').val(''); // Clear the input field
+        $('[VendorName]').show(); // Show all Vendor elements
+    });
+});

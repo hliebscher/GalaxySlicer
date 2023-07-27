@@ -16,9 +16,20 @@
 <script type="text/javascript" src="24.js"></script>		
 </head>
 <body onLoad="OnInit()">
-<div id="Title">
-	<div class="trans" tid="t10">Printer Selection</div>
+
+<!--GalaxySlicer: TitleBar with Searchfield-->
+<div id="TitleBar">
+    <div id="TitleBarSpacer"></div>
+	
+    <div id="TitleBarText">
+        <p class="trans" tid="t10">Printer Selection</p>
+    </div>
+	
+    <div id="SearchWrapper">
+        <input class="trans" tid="t100" type="search" id="Search" placeholder="Search" spellcheck="false" onchange="FilterVendor()">
+    </div>
 </div>
+
 <div id="Content"  class="ZScrol"s>
 
 <!--<div class="OneVendorBlock" Vendor="BBL">	
@@ -101,7 +112,7 @@
 	
 </body>
 <script>
-	document.onkeydown = function (event) {
+	/*document.onkeydown = function (event) {
 		var e = event || window.event || arguments.callee.caller.arguments[0];
 
 		if (e.keyCode == 27)
@@ -111,6 +122,26 @@
 			try { e.keyCode = 0; } catch (e) { }
 			e.returnValue = false;
 		}
-	};
+	};*/
+	
+	document.onkeydown = function (event) {
+    var e = event || window.event || arguments.callee.caller.arguments[0];
+
+    // Prüfen, ob das Ereignis auf einem Input-Feld stattfindet
+    var target = e.target || e.srcElement;
+    var isInputField = target.tagName.toLowerCase() === 'input' || target.tagName.toLowerCase() === 'textarea';
+
+    if (!isInputField) {
+        if (e.keyCode == 27)
+            ClosePage();
+
+        if (window.event) {
+            try { e.keyCode = 0; } catch (e) { }
+            e.returnValue = false;
+        } else {
+            e.preventDefault();
+        }
+    }
+};
 </script>
 </html>

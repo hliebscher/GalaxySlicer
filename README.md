@@ -1,5 +1,8 @@
 ![GalaxySlicer_github_banner](https://github.com/fr3ak2402/GalaxySlicer/assets/96239814/31a440c6-fa99-42f0-af4a-f8589d34dfb8)
 -------------------------------------
+[![Build Win x64](https://github.com/fr3ak2402/GalaxySlicer/actions/workflows/build_win_x64.yml/badge.svg)](https://github.com/fr3ak2402/GalaxySlicer/actions/workflows/build_win_x64.yml)
+[![Build macOS arm64](https://github.com/fr3ak2402/GalaxySlicer/actions/workflows/build_macOS_arm64.yml/badge.svg)](https://github.com/fr3ak2402/GalaxySlicer/actions/workflows/build_macOS_arm64.yml)
+-------------------------------------
 
 GalaxySlicer is an extended version of the Orca Slicer.
 
@@ -9,6 +12,23 @@ GalaxySlicer is based on **[Orca Slicer](https://github.com/SoftFever/OrcaSlicer
 - Profile Manager (Coming soon)
 - Marlin2 support (Coming soon)
 - Klipper support
+
+# Supported printers
+
+The following printers are currently supported by GalaxySlicer: **[Printer list](https://github.com/fr3ak2402/GalaxySlicer-Profile-Library/wiki/Supported-printers)**
+
+# Pre-compiled releases
+Currently, only Windows, macOS x64 & arm64 releases are precompiled.
+
+All compile releases can be found at the following link: **[Releases](https://github.com/fr3ak2402/GalaxySlicer/releases)**
+
+# How to Wiki articles
+In the GalaxySlicer wiki, How to contributions are maintained, these articles show the required steps. 
+
+The following How to articles can be found in the Wiki:
+
+* **[Translation guide](https://github.com/fr3ak2402/GalaxySlicer/wiki/Translation-guide)**
+* **[Compile GalaxySlicer](https://github.com/fr3ak2402/GalaxySlicer/wiki/Compile-GalaxySlicer)**
 
 # License
 GalaxySlicer is licensed under the GNU Affero General Public License, version 3. GalaxySlicer is based on Orca Slicer by SoftFever.

@@ -1,6 +1,7 @@
 ![GalaxySlicer_github_banner](https://github.com/fr3ak2402/GalaxySlicer/assets/96239814/31a440c6-fa99-42f0-af4a-f8589d34dfb8)
 -------------------------------------
 [![Build Win x64](https://github.com/fr3ak2402/GalaxySlicer/actions/workflows/build_win_x64.yml/badge.svg)](https://github.com/fr3ak2402/GalaxySlicer/actions/workflows/build_win_x64.yml)
+[![Build macOS x64](https://github.com/fr3ak2402/GalaxySlicer/actions/workflows/build_macOS_x64.yml/badge.svg)](https://github.com/fr3ak2402/GalaxySlicer/actions/workflows/build_macOS_x64.yml)
 [![Build macOS arm64](https://github.com/fr3ak2402/GalaxySlicer/actions/workflows/build_macOS_arm64.yml/badge.svg)](https://github.com/fr3ak2402/GalaxySlicer/actions/workflows/build_macOS_arm64.yml)
 -------------------------------------
 
@@ -27,8 +28,10 @@ In the GalaxySlicer wiki, How to contributions are maintained, these articles sh
 
 The following How to articles can be found in the Wiki:
 
+* **[Install GalaxySlicer](https://github.com/fr3ak2402/GalaxySlicer/wiki/Install-GalaxySlicer)**
 * **[Translation guide](https://github.com/fr3ak2402/GalaxySlicer/wiki/Translation-guide)**
 * **[Compile GalaxySlicer](https://github.com/fr3ak2402/GalaxySlicer/wiki/Compile-GalaxySlicer)**
+* **[Configuring sm2uploader](https://github.com/fr3ak2402/GalaxySlicer/wiki/Configuring-sm2uploader)**
 
 # License
 GalaxySlicer is licensed under the GNU Affero General Public License, version 3. GalaxySlicer is based on Orca Slicer by SoftFever.

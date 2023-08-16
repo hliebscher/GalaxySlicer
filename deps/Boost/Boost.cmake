@@ -1,14 +1,14 @@
 include(ExternalProject)
 
-# Use boost 1.78 for Windows, to support VS2022
+# Use boost 1.82 for Windows, to support VS2022
 if (WIN32)
 	set(_boost_url "https://boostorg.jfrog.io/artifactory/main/release/1.82.0/source/boost_1_82_0.tar.gz")
 	set(_boost_hash 66a469b6e608a51f8347236f4912e27dc5c60c60d7d53ae9bfe4683316c6f04c)
     set(_bootstrap_cmd bootstrap.bat)
     set(_build_cmd  b2.exe)
 else()
-	set(_boost_url "https://boostorg.jfrog.io/artifactory/main/release/1.75.0/source/boost_1_75_0.tar.gz")
-	set(_boost_hash AEB26F80E80945E82EE93E5939BAEBDCA47B9DEE80A07D3144BE1E1A6A66DD6A)
+set(_boost_url "https://boostorg.jfrog.io/artifactory/main/release/1.78.0/source/boost_1_78_0.tar.gz")
+set(_boost_hash 94ced8b72956591c4775ae2207a9763d3600b30d9d7446562c552f0a14a63be7)
     set(_bootstrap_cmd ./bootstrap.sh)
     set(_build_cmd ./b2)
 endif()
@@ -42,8 +42,12 @@ elseif (CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
 elseif (CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
     if (WIN32)
         set(_boost_toolset "clang-win")
-    else()
+    elseif (APPLE)
         set(_boost_toolset "clang")
+    else()
+        set(_boost_toolset clang)
+        configure_file(${CMAKE_CURRENT_LIST_DIR}/user-config.jam boost-user-config.jam)
+        set(_patch_command ${CMAKE_COMMAND} -E copy ${CMAKE_CURRENT_BINARY_DIR}/boost-user-config.jam ./tools/build/src/tools/user-config.jam)
     endif()
 elseif (CMAKE_CXX_COMPILER_ID STREQUAL "Intel")
     set(_boost_toolset "intel")
@@ -150,6 +154,7 @@ if (NOT IS_CROSS_COMPILE OR NOT APPLE OR BUILD_SHARED_LIBS)
     message(STATUS "Standard boost build with patch command '${_patch_command}'")
     message(STATUS "Standard boost build with build command '${_build_cmd}'")
     message(STATUS "Standard boost build with install command '${_install_cmd}'")
+    
 ExternalProject_Add(
     dep_Boost
 	URL ${_boost_url}
@@ -164,6 +169,8 @@ ExternalProject_Add(
 
 else()
 
+list(APPEND _patch_command COMMAND git init && ${PATCH_CMD} ${CMAKE_CURRENT_LIST_DIR}/0001-Boost-fix.patch)
+
 ExternalProject_Add(
     dep_Boost
 	URL ${_boost_url}
@@ -173,7 +180,7 @@ ExternalProject_Add(
         --with-toolset=clang
         --with-libraries=date_time,filesystem,iostreams,locale,log,regex,system,thread
         "--prefix=${DESTDIR}/usr/local"
-#    PATCH_COMMAND ${_patch_command}
+	PATCH_COMMAND ${_patch_command}
     BUILD_COMMAND "${_build_cmd}"
     BUILD_IN_SOURCE    ON
     INSTALL_COMMAND "${_install_cmd}"

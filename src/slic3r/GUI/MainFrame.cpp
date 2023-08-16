@@ -1968,7 +1968,7 @@ static wxMenu* generate_help_menu()
     // Check New Version
     append_menu_item(helpMenu, wxID_ANY, _L("Check for Update"), _L("Check for Update"),
         [](wxCommandEvent&) {
-            wxGetApp().check_new_version_sf(true, 1);
+            wxGetApp().check_new_galaxyslicer_version(true, 1);
         }, "", nullptr, []() {
             return true;
         });
@@ -2571,9 +2571,15 @@ void MainFrame::init_menubar_as_editor()
 #ifndef __APPLE__
     m_topbar->SetFileMenu(fileMenu);
     if (editMenu)
-        m_topbar->AddDropDownSubMenu(editMenu, _L("Edit"));
+        //m_topbar->AddDropDownSubMenu(editMenu, _L("Edit"));
+        
+        //GalaxySlicer: Set Edit Menu
+        m_topbar->SetEditMenu(editMenu);
     if (viewMenu)
-        m_topbar->AddDropDownSubMenu(viewMenu, _L("View"));
+        //m_topbar->AddDropDownSubMenu(viewMenu, _L("View"));
+        
+        //GalaxySlicer: Set View Menu
+        m_topbar->SetViewMenu(viewMenu);
     //BBS add Preference
 
     append_menu_item(
@@ -2749,8 +2755,10 @@ void MainFrame::init_menubar_as_editor()
         [this]() {return m_plater->is_view3D_shown();; }, this);
     
     m_menubar->Append(calib_menu,wxString::Format("&%s", _L("Calibration")));
+
     if (helpMenu)
         m_menubar->Append(helpMenu, wxString::Format("&%s", _L("Help")));
+
     SetMenuBar(m_menubar);
 
 #endif

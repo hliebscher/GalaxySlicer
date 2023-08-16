@@ -8,5 +8,5 @@
     "bed_model": "snapmaker_a350_buildplate_model.stl",
     "bed_texture": "snapmaker_a350_buildplate_texture.png",
     "hotend_model": "",
-    "default_materials": "Snapmaker Generic ABS;Snapmaker Generic PLA;Snapmaker Generic PLA-CF;Snapmaker Generic PETG;Snapmaker Generic TPU;Snapmaker Generic ASA;Snapmaker Generic PC;Snapmaker Generic PVA;Snapmaker Generic PA;Snapmaker Generic PA-CF"
+    "default_materials": "Snapmaker ABS @0.2 nozzle;Snapmaker PLA @0.2 nozzle;Snapmaker PLA-CF @0.2 nozzle;Snapmaker PETG @0.2 nozzle;Snapmaker TPU @0.2 nozzle;Snapmaker ASA @0.2 nozzle;Snapmaker PVA @0.2 nozzle;Snapmaker PA-CF @0.2 nozzle;Snapmaker ABS @0.4 nozzle;Snapmaker PLA @0.4 nozzle;Snapmaker PLA-CF @0.4 nozzle;Snapmaker PETG @0.4 nozzle;Snapmaker TPU @0.4 nozzle;Snapmaker ASA @0.4 nozzle;Snapmaker PVA @0.4 nozzle;Snapmaker PA-CF @0.4 nozzle;Snapmaker ABS @0.6 nozzle;Snapmaker PLA @0.6 nozzle;Snapmaker PLA-CF @0.6 nozzle;Snapmaker PETG @0.6 nozzle;Snapmaker TPU @0.6 nozzle;Snapmaker ASA @0.6 nozzle;Snapmaker PVA @0.6 nozzle;Snapmaker PA-CF @0.6 nozzle;Snapmaker ABS @0.8 nozzle;Snapmaker PLA @0.8 nozzle;Snapmaker PLA-CF @0.8 nozzle;Snapmaker PETG @0.8 nozzle;Snapmaker TPU @0.8 nozzle;Snapmaker ASA @0.8 nozzle;Snapmaker PVA @0.8 nozzle;Snapmaker PA-CF @0.8 nozzle"
 }
